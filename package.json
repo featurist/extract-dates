@@ -9,7 +9,8 @@
   ],
   "scripts": {
     "test": "pogo -c index.pogo && mocha",
-    "compile": "pogo -c index.pogo"
+    "compile": "pogo -c index.pogo",
+    "patch": "pogo -c index.pogo && mocha && npm version patch"
   },
   "repository": {
     "type": "git",
