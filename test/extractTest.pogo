@@ -47,6 +47,7 @@ describe 'extract-dates'
     it finds ['2012-02'] in 'feb 2012'
     it finds ['1978-09'] in 'sep 78'
     it finds ['1999-12-31'] in '31 December 1999'
+    it finds ['1996-05-24'] in '24th May 1996'
     it finds ['1901-06-01'] in '1st june 1901'
     it finds ['2012-07-02'] in '2nd jul 12'
 

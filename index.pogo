@@ -66,7 +66,9 @@ tokenise (chain) =
   ]
 
 tokenType (word) =
-  if (word.match(r/^\d+$/))
+  if (word.match(r/^\d\d\d\d+$/))
+    'year'
+  else if (word.match(r/^\d+$/))
     'number'
   else if (word.match(r/\d/))
     'day'
@@ -81,9 +83,9 @@ parse (tokens, now) =
   relativeYear (year) = nearestYear (year, now)
   t0 = tokens.0, t1 = tokens.1, t2 = tokens.2
   if (tokens.length == 3)
-    if (t0.word.length > 3)
+    if (t0.type == 'year')
       [t0.value, t1.value, t2.value]
-    else if (t2.word.length > 3)
+    else if (t2.type == 'year')
       [t2.value, t1.value, t0.value]
     else if (t0.type == 'month')
       [t2.value, t0.value, t1.value]
@@ -98,12 +100,12 @@ parse (tokens, now) =
       [relativeYear (t1.value), t0.value]
     else if (t1.type == 'month')
       [t0.value, t1.value]
-    else if (t0.word.length > 2)
+    else if (t0.type == 'year')
       [t0.value, t1.value]
     else
       [relativeYear (t1.value), t0.value]
   else if (tokens.length == 1)
-    if (t0.type == 'number' @and t0.value > 0)
+    if (t0.type == 'year' @or (t0.type == 'number' @and t0.value > 0))
       [t0.value]
 
 nearestYear (year, now) =
