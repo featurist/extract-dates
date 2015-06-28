@@ -13,10 +13,13 @@ chainsInMatches (matches) =
   c = [], chains = [], delim = false, inDate = false
 
   nextChain () =
-    if (c.length > 0) @{ chains.push (c) }
+    if (c.length > 0)
+      chains.push (c)
+
     c := []
 
-  for each @(word) in (matches)
+  for (i = 0, i < matches.length, i := i + 1)
+    word = matches.(i)
     if (isDatePart(word))
       if (inDate)
         nextChain()
@@ -29,6 +32,8 @@ chainsInMatches (matches) =
         delim := word
       else if (word != delim)
         nextChain()
+        if (isDatePart(matches.(i + 1)) @and word == matches.(i + 2) @and isDatePart(matches.(i + 3)))
+          i := i - 2
     else
       nextChain()
 

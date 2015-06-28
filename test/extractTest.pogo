@@ -53,10 +53,11 @@ describe 'extract-dates'
 
   describe 'when there are multiple dates'
 
-    it finds ['2015', '2016'] in 'some day in 2015 or maybe 2016'
-    it finds ['2001-01-01', '1996-01'] in '2001-01-01 Jan 1996'
-    it finds ['2020', '2021-12'] in 'Some day in 2020 or dec 2021'
     it finds ['2012-12-12', '2011-11-11', '2033-03'] in '12/12/2012 or 11.nov.2011 or 2033/03'
+    it finds ['2015', '2016'] in 'some day in 2015 or maybe 2016'
+    it finds ['2001-01-01', '1996-01-01'] in '2001-01-01 Jan 1996'
+    it finds ['2020', '2021-12'] in 'Some day in 2020 or dec 2021'
+    it finds ['2001-09-21', '2001-01-01'] in '21st sep 2001-01-01'
 
   describe 'finding dates relative to another year'
 
