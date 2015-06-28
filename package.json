@@ -1,0 +1,25 @@
+{
+  "name": "extract-dates",
+  "version": "1.0.0",
+  "description": "Finds dates in strings where date formats are unpredictable",
+  "author": "Josh Chisholm <joshuachisholm@gmail.com>",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "test": "pogo -c index.pogo && mocha",
+    "compile": "pogo -c index.pogo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/featurist/extract-dates.git"
+  },
+  "license": "BSD",
+  "devDependencies": {
+    "bluebird": "^2.9.30",
+    "chai": "^3.0.0",
+    "mocha": "^2.2.5",
+    "pogo": "^0.9.10"
+  }
+}
